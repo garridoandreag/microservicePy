@@ -1,21 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: accounts-stable
+  name: microservice-stable
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: accounts
-      track: stable
+      app: microservice
+      version: v1
   template:
     metadata:
       labels:
-        app: accounts
-        track: stable
+        app: microservice
+        version: v1
     spec:
       containers:
-      - name: accounts
+      - name: microservice
         image: ghcr.io/garridoandreag/microservicepy:latest
         ports:
-        - containerPort: 8000
+        - containerPort: 5000
+
