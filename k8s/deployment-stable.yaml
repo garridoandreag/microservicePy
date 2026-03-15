@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: accounts-stable
-  namespace: microservice
 spec:
   replicas: 3
   selector:
@@ -14,26 +13,9 @@ spec:
       labels:
         app: accounts
         track: stable
-        version: v1
     spec:
       containers:
-        - name: accounts
-          image: ghcr.io/garridoandreag/microservicepy:v1
-          imagePullPolicy: Always
-          env:
-            - name: APP_VERSION
-              value: "v1"
-          ports:
-            - containerPort: 8000
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: 8000
-            initialDelaySeconds: 5
-            periodSeconds: 5
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 8000
-            initialDelaySeconds: 10
-            periodSeconds: 10
+      - name: accounts
+        image: ghcr.io/garridoandreag/microservicepy:latest
+        ports:
+        - containerPort: 8000
