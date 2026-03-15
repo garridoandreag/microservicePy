@@ -37,4 +37,11 @@ def test_health_check() -> None:
     response = client.get("/health")
 
     assert response.status_code == 200
-    assert response.json() == {"status": "OK"}
+    assert response.json() == {"status": "OK", "version": "v1"}
+
+
+def test_version_check() -> None:
+    response = client.get("/version")
+
+    assert response.status_code == 200
+    assert response.json() == {"version": "v1"}
