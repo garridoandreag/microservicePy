@@ -1,12 +1,10 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
-
 class Account(BaseModel):
 	accountNumber: str
 	firstName: str
 	lastName: str
-
 
 app = FastAPI(title="Accounts Microservice")
 
@@ -17,12 +15,10 @@ accounts = [
 	Account(accountNumber="1003", firstName="Maria", lastName="Lopez"),
 ]
 
-
 # Obtener todas las cuentas
 @app.get("/accounts", response_model=list[Account])
 def get_accounts() -> list[Account]:
 	return accounts
-
 
 # Obtener una cuenta por su número de cuenta
 @app.get("/accounts/{account_number}", response_model=Account)
@@ -33,7 +29,6 @@ def get_account_by_number(account_number: str) -> Account:
 		raise HTTPException(status_code=404, detail="Account not found")
 
 	return account
-
 
 # Verificación de Health
 @app.get("/health")
