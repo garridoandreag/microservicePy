@@ -9,6 +9,13 @@ on:
 
 permissions:
   contents: read
+  packages: write
+
+  outputs:
+      image_tag: ${{ steps.meta.outputs.image_tag }}
+
+env:
+  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/microservicepy
 
 jobs:
   test_and_build:
@@ -29,3 +36,16 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test with pytest
       run: pytest test.py
+    
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v6
+      with:
+        push: true
+        tags: ghcr.io/garridoandreag/microservicepy:latest
