@@ -12,7 +12,7 @@ app = FastAPI(title="Accounts Microservice")
 APP_VERSION = os.getenv("APP_VERSION", "v1")
 
 accounts = [
-    Account(accountNumber="1001", firstName="Andrea", lastName="Gomez"),
+    Account(accountNumber="1001", firstName="Rosa Maria", lastName="Gomez"),
     Account(accountNumber="1002", firstName="Carlos", lastName="Ramirez"),
     Account(accountNumber="1003", firstName="Maria", lastName="Lopez"),
 ]
