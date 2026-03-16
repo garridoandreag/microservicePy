@@ -13,8 +13,8 @@ APP_VERSION = os.getenv("APP_VERSION", "v1")
 
 accounts = [
     Account(accountNumber="1001", firstName="Andrea", lastName="Gomez"),
-    Account(accountNumber="1002", firstName="Karla", lastName="Ramirez"),
-    Account(accountNumber="1003", firstName="Carlos", lastName="Lopez"),
+    Account(accountNumber="1002", firstName="Carlos", lastName="Ramirez"),
+    Account(accountNumber="1003", firstName="Lucia", lastName="Lopez"),
 ]
 
 @app.get("/accounts", response_model=list[Account])
