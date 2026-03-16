@@ -7,15 +7,16 @@ spec:
   selector:
     matchLabels:
       app: microservice
-      version: v2
+      version: canary
   template:
     metadata:
       labels:
         app: microservice
-        version: v2
+        version: canary
     spec:
       containers:
-      - name: microservice
-        image: ghcr.io/garridoandreag/microservicepy:dcba7ee7bb4e57f3b1855518d6173d0f1fba6405
-        ports:
-          - containerPort: 8000
+        - name: microservice
+          image: ghcr.io/garridoandreag/microservicepy:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
