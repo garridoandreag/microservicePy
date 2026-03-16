@@ -17,6 +17,5 @@ spec:
       containers:
         - name: microservice
           image: ghcr.io/garridoandreag/microservicepy:latest
-          imagePullPolicy: Always
           ports:
             - containerPort: 8000

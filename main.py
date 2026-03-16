@@ -12,14 +12,15 @@ app = FastAPI(title="Accounts Microservice")
 APP_VERSION = os.getenv("APP_VERSION", "v1")
 
 accounts = [
-    Account(accountNumber="1001", firstName="Andrea", lastName="Gomez"),
+    Account(accountNumber="1001", firstName="Rosa Maria", lastName="Gomez"),
     Account(accountNumber="1002", firstName="Carlos", lastName="Ramirez"),
-    Account(accountNumber="1003", firstName="Lucia", lastName="Lopez"),
+    Account(accountNumber="1003", firstName="Maria", lastName="Lopez"),
 ]
 
 @app.get("/accounts", response_model=list[Account])
 def get_accounts() -> list[Account]:
-    return accounts
+    return {"error": "simulated failure"}, 500
+
 
 @app.get("/accounts/{account_number}", response_model=Account)
 def get_account_by_number(account_number: str) -> Account:
