@@ -18,4 +18,4 @@ spec:
       - name: microservice
         image: ghcr.io/garridoandreag/microservicepy:dcba7ee7bb4e57f3b1855518d6173d0f1fba6405
         ports:
-        - containerPort: 5000
+          - containerPort: 8000
